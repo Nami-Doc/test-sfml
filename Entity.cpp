@@ -2,7 +2,7 @@
 
 /** Normal constructor.
  */
-Entity::Entity(const char* const textureFile, uint x, uint y)
+Entity::Entity(const char* textureFile, uint x, uint y)
 	: m_X(x), m_Y(y), m_Texture(sf::Texture()) {
 	m_Texture.loadFromFile(textureFile);
 	m_Sprite = sf::Sprite(m_Texture);
@@ -11,10 +11,8 @@ Entity::Entity(const char* const textureFile, uint x, uint y)
 
 /** Used by Player::Player.
  */
-Entity::Entity(const char* const textureFile)
-	: m_X(0), m_Y(0), m_Texture(sf::Texture()) {
-	m_Texture.loadFromFile(textureFile);
-	m_Sprite = sf::Sprite(m_Texture);
+Entity::Entity(const char* textureFile)
+	: Entity(textureFile, 0, 0) {
 }
 
 sf::IntRect const Entity::getBoundingBox() const {

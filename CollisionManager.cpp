@@ -1,7 +1,13 @@
 #include "CollisionManager.h"
 
-CollisionManager::CollisionManager(Player* const& player, const string& map, uint maxX, uint maxY)
-	: m_Player{player}, m_MaxX{maxX}, m_MaxY{maxY}, m_Obstacles{vector<Entity>()}, m_Items{vector<Item>()} {
+using namespace std;
+
+CollisionManager::CollisionManager(Player* player, const string& map, uint maxX, uint maxY)
+ : m_Player{player},
+    m_MaxX{maxX},
+    m_MaxY{maxY},
+    m_Obstacles{vector<Entity>()},
+    m_Items{vector<Item>()} {
 
 	parseMap(map);
 }

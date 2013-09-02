@@ -3,12 +3,10 @@
 #include <map>
 #include "Player.h"
 
-using namespace std;
-
 typedef void (*Behavior)(Player&);
 class BehaviorManager {
 public:
-	Behavior getBehavior(string name);
+	Behavior getBehavior(std::string name);
 	static BehaviorManager& getInstance()
 	{
 		static BehaviorManager bm;
@@ -18,5 +16,5 @@ public:
 
 private:
 	BehaviorManager();
-	map<string, Behavior> m_Behaviors;
+	std::map<std::string, Behavior> m_Behaviors;
 };

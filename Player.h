@@ -3,7 +3,7 @@
 
 class Player : public Entity {
 public:
-	Player(const char* const textureFile);
+	Player(const char* textureFile);
 	~Player();
 	void move();
 	void revertX();
