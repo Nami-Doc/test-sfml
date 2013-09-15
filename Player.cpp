@@ -15,7 +15,7 @@ void Player::updateSpeed() {
 		m_XSpeed = 0;
 	}
 	m_XSpeed *= m_Accel;
-	
+
 	if (Keyboard::isKeyPressed(Keyboard::Down)) {
 		m_YSpeed = 1;
 	} else if (Keyboard::isKeyPressed(Keyboard::Up)) {
@@ -42,5 +42,4 @@ void Player::revertY() {
 }
 
 Player::~Player() {
-	std::cout << "was prolly a copy\n";
 }

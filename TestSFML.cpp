@@ -40,13 +40,13 @@ _____";
 		player.updateSpritePosition();
 
 		window.clear();
-		window.draw(player.getSprite());
+		window.draw(*player.getSprite());
 
-		for (auto& obstacle : colMgr.getObstacles()) {
-			window.draw(obstacle.getSprite());
+		for (auto obstacle : colMgr.getObstacles()) {
+			window.draw(*obstacle->getSprite());
 		}
-		for (auto& item : colMgr.getItems()) {
-			window.draw(item.getSprite());
+		for (auto item : colMgr.getItems()) {
+			window.draw(*item->getSprite());
 		}
 
 		window.display();

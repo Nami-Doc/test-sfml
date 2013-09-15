@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <memory>
 #include "NonCopyable.h"
 
 using uint = unsigned int;
@@ -13,7 +14,7 @@ public:
 	~Entity();
 	void loadSprite(const char* textureFile);
 	void updateSpritePosition();
-	sf::Sprite const& getSprite() const { return m_Sprite; };
+	sf::Sprite* getSprite() const { return m_Sprite.get(); };
 	sf::IntRect const getBoundingBox() const;
 	int getX() const { return m_X; };
 	void setX(uint x) { m_X = x; };
@@ -21,8 +22,9 @@ public:
 	void setY(uint y) { m_Y = y; };
 
 protected:
-	sf::Texture m_Texture;
-	sf::Sprite m_Sprite;
+	std::unique_ptr<sf::Texture> m_Texture;
+	std::unique_ptr<sf::Sprite> m_Sprite;
+
 	// might be negative while moving
 	int m_X;
 	int m_Y;

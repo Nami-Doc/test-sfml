@@ -9,11 +9,11 @@ void behaviorXSpeedUpgrade(Player& player) {
 }
 
 BehaviorManager::BehaviorManager()
- : m_Behaviors{std::map<std::string, Behavior>()} {
-	m_Behaviors["p"] = behaviorXSpeedUpgrade;
+ : m_Behaviors{std::map<char, Behavior>()} {
+	m_Behaviors['p'] = behaviorXSpeedUpgrade;
 }
 
-Behavior BehaviorManager::getBehavior(std::string name) {
+Behavior BehaviorManager::getBehavior(char name) {
 	if (m_Behaviors.find(name) != m_Behaviors.end()) {
 		return m_Behaviors[name];
 	} else {

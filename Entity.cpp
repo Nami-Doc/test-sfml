@@ -3,9 +3,12 @@
 /** Normal constructor.
  */
 Entity::Entity(const char* textureFile, uint x, uint y)
-	: m_X(x), m_Y(y), m_Texture(sf::Texture()) {
-	m_Texture.loadFromFile(textureFile);
-	m_Sprite = sf::Sprite(m_Texture);
+  : m_X{x},
+    m_Y{y},
+    m_Texture{new sf::Texture()} {
+
+	m_Texture->loadFromFile(textureFile);
+	//m_Sprite = new sf::Sprite(*m_Texture.get());
 	updateSpritePosition();
 }
 
@@ -27,8 +30,9 @@ sf::IntRect const Entity::getBoundingBox() const {
 /* Updates sprite's X and Y.
  */
 void Entity::updateSpritePosition() {
-	m_Sprite.setPosition(static_cast<float>(m_X), static_cast<float>(m_Y));
+	m_Sprite->setPosition(static_cast<float>(m_X), static_cast<float>(m_Y));
 }
 
 Entity::~Entity() {
+    std::cout << "cya\n";
 }

@@ -3,9 +3,9 @@
 using namespace std;
 
 CollisionManager::CollisionManager(Player* player, const string& map, uint maxX, uint maxY)
- : m_Player{player},
-    m_Obstacles{vector<Entity>()},
-    m_Items{vector<Item>()},
+  : m_Player{player},
+    m_Obstacles{vector<Entity*>()},
+    m_Items{vector<Item*>()},
     m_MaxX{maxX},
     m_MaxY{maxY} {
 
@@ -24,9 +24,9 @@ void CollisionManager::parseMap(const string& map) {
 			m_Player->setY(y);
 		} else if (c != "\n" && c != " ") {
 			if (c == "_") {
-				m_Obstacles.emplace_back("wall.jpg", x, y);
+				m_Obstacles.emplace_back(new Entity("wall.jpg", x, y));
 			} else {
-				m_Items.emplace_back((c + ".png").c_str(), x, y);
+				m_Items.emplace_back(new Item((c + ".png").c_str(), x, y));
 			}
 		}
 
@@ -70,8 +70,8 @@ void CollisionManager::checkCollisions() {
 
 	sf::IntRect boundingBox = m_Player->getBoundingBox();
 
-	for (Entity& obstacle : m_Obstacles) {
-		if (boundingBox.intersects(obstacle.getBoundingBox())) {
+	for (Entity* obstacle : m_Obstacles) {
+		if (boundingBox.intersects(obstacle->getBoundingBox())) {
 			if (!hasXReset) {
 				m_Player->revertX();
 			}
@@ -81,7 +81,7 @@ void CollisionManager::checkCollisions() {
 			break;
 		}
 	}
-
+/*
 	for (auto& item = m_Items.begin(); item != m_Items.end();) {
 		if (boundingBox.intersects(item->getBoundingBox())) {
 			item->trigger(*m_Player);
@@ -90,6 +90,7 @@ void CollisionManager::checkCollisions() {
 		}
 		++item;
 	}
+	*/
 }
 
 CollisionManager::~CollisionManager() {
