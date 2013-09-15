@@ -4,10 +4,10 @@ using namespace std;
 
 CollisionManager::CollisionManager(Player* player, const string& map, uint maxX, uint maxY)
  : m_Player{player},
-    m_MaxX{maxX},
-    m_MaxY{maxY},
     m_Obstacles{vector<Entity>()},
-    m_Items{vector<Item>()} {
+    m_Items{vector<Item>()},
+    m_MaxX{maxX},
+    m_MaxY{maxY} {
 
 	parseMap(map);
 }

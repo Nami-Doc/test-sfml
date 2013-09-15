@@ -21,4 +21,3 @@ private:
 	uint m_MaxX;
 	uint m_MaxY;
 };
-
