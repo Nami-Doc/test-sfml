@@ -6,7 +6,7 @@
 typedef void (*Behavior)(Player&);
 class BehaviorManager {
 public:
-	Behavior getBehavior(char name);
+	Behavior getBehavior(std::string name);
 	static BehaviorManager& getInstance()
 	{
 		static BehaviorManager bm;
@@ -16,5 +16,5 @@ public:
 
 private:
 	BehaviorManager();
-	std::map<char, Behavior> m_Behaviors;
+	std::map<std::string, Behavior> m_Behaviors;
 };

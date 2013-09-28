@@ -81,16 +81,17 @@ void CollisionManager::checkCollisions() {
 			break;
 		}
 	}
-/*
-	for (auto& item = m_Items.begin(); item != m_Items.end();) {
+
+    int i = 0;
+    // NOTE : only handles ONE item collision at a time
+	for (Item* item : m_Items) {
 		if (boundingBox.intersects(item->getBoundingBox())) {
 			item->trigger(*m_Player);
-			m_Items.erase(item);
+			m_Items.erase(m_Items.begin() + i);
 			break;
 		}
-		++item;
+        ++i;
 	}
-	*/
 }
 
 CollisionManager::~CollisionManager() {

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <memory>
 #include "NonCopyable.h"
+#include "utility.h"
 
 using uint = unsigned int;
 
@@ -22,10 +23,10 @@ public:
 	void setY(uint y) { m_Y = y; };
 
 protected:
-	std::unique_ptr<sf::Texture> m_Texture;
-	std::unique_ptr<sf::Sprite> m_Sprite;
-
 	// might be negative while moving
 	int m_X;
 	int m_Y;
+
+	std::unique_ptr<sf::Texture> m_Texture;
+	std::unique_ptr<sf::Sprite> m_Sprite;
 };

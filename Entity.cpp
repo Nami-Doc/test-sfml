@@ -3,12 +3,12 @@
 /** Normal constructor.
  */
 Entity::Entity(const char* textureFile, uint x, uint y)
-  : m_X{x},
-    m_Y{y},
+  : m_X{static_cast<int>(x)},
+    m_Y{static_cast<int>(y)},
     m_Texture{new sf::Texture()} {
 
 	m_Texture->loadFromFile(textureFile);
-	//m_Sprite = new sf::Sprite(*m_Texture.get());
+	m_Sprite = utility::make_unique(new sf::Sprite(*m_Texture.get()));
 	updateSpritePosition();
 }
 

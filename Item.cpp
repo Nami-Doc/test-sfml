@@ -3,7 +3,7 @@
 Item::Item(const char* textureFile, uint x, uint y)
 	: super(textureFile, x, y)
 {
-	m_Behavior = BehaviorManager::getInstance().getBehavior(textureFile[0]);
+	m_Behavior = BehaviorManager::getInstance().getBehavior(std::string(textureFile, 1));
 }
 
 void Item::trigger(Player& player) {
