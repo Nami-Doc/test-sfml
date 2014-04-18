@@ -42,6 +42,11 @@ void CollisionManager::parseMap(const string& map) {
 void CollisionManager::checkCollisions() {
 	// if we're colliding with an obstacle AND with
 	// a boundary, we shouldn't revert[XY] more than once
+	
+	// NOTE : 
+	// In a perfect world, there'd be no reason to *reset* -
+	// we'd just calculate where to go. I'm just too lazy to.
+	
 	bool hasXReset = false, hasYReset = false;
 
 	int entitySize = 32;
