@@ -13,8 +13,6 @@ int main(int argc, char *argv[]) {
 	window.setFramerateLimit(FPS_LIMIT);
 
 	Player player("marine.png");
-	std::vector<Entity> obstacles;
-	std::vector<Item> items;
 	std::string obstacleMap = \
 "  *\n\
 _ _ _\n\
