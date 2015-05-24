@@ -8,7 +8,7 @@
 
 const int FPS_LIMIT = 60;
 
-int main(int argc, char *argv[]) {
+int main(int /*argc*/, char* /*argv*/[]) {
 	sf::RenderWindow window(sf::VideoMode(192, 192), "SFML test");
 	window.setFramerateLimit(FPS_LIMIT);
 
@@ -30,6 +30,8 @@ _____";
 				case sf::Event::Closed:
 					window.close();
 				break;
+        default:
+        break;
 			}
 		}
 

@@ -1,6 +1,8 @@
-CXX = clang
+CXX = clang++
 
-CXXFLAGS = -Wall -Werror -Wextra
+CXXFLAGS = -Wall -Werror -Wextra -std=c++1z
+
+LIBS	= -lsfml-graphics -lsfml-window -lsfml-system
 
 SRC = $(wildcard *.cpp)
 
@@ -11,7 +13,7 @@ NAME = test-sfml
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CXX) -o $(NAME) $(OBJ) $(CXXFLAGS)
+	$(CXX) -o $(NAME) $(OBJ) $(LIBS) $(CXXFLAGS)
 
 clean:
 	rm -f $(OBJ)
